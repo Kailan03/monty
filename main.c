@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	instruction_t instructions[] = {
 	{"push", push},
 	{"pall", pall},
-        /* Add more opcodes and corresponding functions as needed */
+	/* Add more opcodes and corresponding functions as needed */
 	{NULL, NULL}};
 
 	if (argc != 2)
