@@ -2,6 +2,12 @@
 #define MONTY_H
 
 #define _GNU_SOURCE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -41,5 +47,6 @@ int main(int argc, char *argv[]);
 void execute_instruction(char *line, stack_t **stack,
 		instruction_t instructions[], unsigned int line_number);
 void free_stack(stack_t *stack);
+void pint(stack_t **stack, unsigned int line_number);
 
 #endif
