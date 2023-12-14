@@ -1,27 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "monty.h"
 
 /**
- * push_stack - Pushes an element onto the stack.
+ * push - Pushes an element onto the stack.
  * @stack: A pointer to the top of the stack.
- * @value: The value to push onto the stack.
+ * @line_number: The line number in the file where the push opcode was encountered.
  */
-void push_stack(stack_t **stack, int value)
+void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_node = malloc(sizeof(stack_t));
+    char *arg = strtok(NULL, " \n\t\r");
+    int value;
 
-	if (new_node == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+    if (!arg || !is_integer(arg))
+    {
+        fprintf(stderr, "L%u: usage: push integer\n", line_number);
+        exit(EXIT_FAILURE);
+    }
 
-	new_node->n = value;
-	new_node->prev = NULL;
-	new_node->next = *stack;
-
-	if (*stack != NULL)
-		(*stack)->prev = new_node;
-	*stack = new_node;
+    value = atoi(arg);
+    push_stack(stack, value); /* Assume push_stack is a function to push onto the stack */
 }
